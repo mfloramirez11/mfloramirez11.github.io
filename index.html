@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manny Flores - Enterprise Applications Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+--primary: #00d9ff;
+--secondary: #7c3aed;
+--accent: #10b981;
+--bg: #0a0e27;
+--surface: #151b35;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+background: var(--bg);
+color: #e2e8f0;
+overflow-x: hidden;
+}
+
+/* Smooth gradient background */
+body::before {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: 
+radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.03), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.03), transparent 40%);
+pointer-events: none;
+z-index: 0;
+}
+
+.content {
+position: relative;
+z-index: 1;
+}
+
+/* Container */
+.container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+/* Hero */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 2rem 0;
+}
+
+.profile-pic {
+width: 140px;
+height: 140px;
+border-radius: 50%;
+border: 2px solid var(--primary);
+box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+margin-bottom: 2rem;
+transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+transform: scale(1.05);
+}
+
+h1 {
+font-size: 3.5rem;
+font-weight: 700;
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 0.5rem;
+line-height: 1.2;
+}
+
+.tagline {
+font-size: 1.5rem;
+color: #94a3b8;
+font-weight: 300;
+margin-bottom: 1.5rem;
+}
+
+.intro {
+font-size: 1.1rem;
+color: #94a3b8;
+max-width: 600px;
+margin: 0 auto 2rem;
+line-height: 1.7;
+}
+
+/* Social links */
+.social-links {
+display: flex;
+gap: 1rem;
+justify-content: center;
+}
+
+.social-link {
+width: 45px;
+height: 45px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1.5px solid var(--primary);
+border-radius: 50%;
+color: var(--primary);
+transition: all 0.3s ease;
+}
+
+.social-link:hover {
+background: var(--primary);
+color: var(--bg);
+transform: translateY(-3px);
+}
+
+/* Section styling */
+section {
+padding: 6rem 0;
+}
+
+.section-title {
+font-size: 2rem;
+font-weight: 600;
+text-align: center;
+margin-bottom: 3rem;
+background: linear-gradient(135deg, var(--primary), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* Cards grid */
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 1.5rem;
+margin-bottom: 3rem;
+}
+
+.card {
+background: var(--surface);
+border-radius: 12px;
+padding: 2rem;
+border: 1px solid rgba(255, 255, 255, 0.05);
+transition: all 0.3s ease;
+}
+
+.card:hover {
+border-color: var(--primary);
+transform: translateY(-5px);
+box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+}
+
+.card-icon {
+font-size: 2rem;
+margin-bottom: 1rem;
+display: block;
+}
+
+.card h3 {
+font-size: 1.2rem;
+font-weight: 600;
+color: var(--primary);
+margin-bottom: 0.75rem;
+}
+
+.card p {
+color: #94a3b8;
+line-height: 1.6;
+font-size: 0.95rem;
+}
+
+/* Tech badges */
+.tech-stack {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+justify-content: center;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.badge {
+padding: 0.5rem 1rem;
+border-radius: 20px;
+border: 1px solid;
+font-size: 0.85rem;
+font-weight: 500;
+transition: all 0.3s ease;
+white-space: nowrap;
+}
+
+.badge.b1 { border-color: var(--primary); color: var(--primary); }
+.badge.b2 { border-color: var(--secondary); color: var(--secondary); }
+.badge.b3 { border-color: var(--accent); color: var(--accent); }
+
+.badge:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 15px currentColor;
+}
+
+/* Projects */
+.projects {
+display: grid;
+gap: 1.5rem;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.project {
+background: var(--surface);
+border-radius: 12px;
+padding: 2rem;
+border-left: 3px solid var(--primary);
+transition: all 0.3s ease;
+}
+
+.project:hover {
+transform: translateX(5px);
+box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+}
+
+.project h3 {
+font-size: 1.3rem;
+font-weight: 600;
+color: #e2e8f0;
+margin-bottom: 0.75rem;
+}
+
+.project p {
+color: #94a3b8;
+line-height: 1.7;
+}
+
+/* CTA */
+.cta {
+text-align: center;
+padding: 5rem 0;
+}
+
+.cta-button {
+display: inline-block;
+padding: 1rem 2.5rem;
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+color: white;
+border-radius: 50px;
+font-weight: 600;
+text-decoration: none;
+transition: all 0.3s ease;
+box-shadow: 0 8px 25px rgba(0, 217, 255, 0.3);
+}
+
+.cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 35px rgba(0, 217, 255, 0.4);
+}
+
+/* Footer */
+footer {
+text-align: center;
+padding: 2rem;
+color: #64748b;
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+h1 { font-size: 2.5rem; }
+.tagline { font-size: 1.2rem; }
+.intro { font-size: 1rem; }
+.section-title { font-size: 1.7rem; }
+.container { padding: 0 1.5rem; }
+section { padding: 4rem 0; }
+.card, .project { padding: 1.5rem; }
+}
+
+html {
+scroll-behavior: smooth;
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+
+<!-- Hero -->
+<section class="hero">
+<div class="container">
+<img src="https://media.licdn.com/dms/image/v2/D5603AQEt-a1K8eOaPQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1670566016425?e=1763596800&v=beta&t=EZbSqlxazxHDVY3-4N1mrqM9KWUqyuFbcXN5_I8MOTY" 
+alt="Manny Flores" 
+class="profile-pic">
+<h1>Manny Flores</h1>
+<p class="tagline">Senior Enterprise Applications Engineer</p>
+<p class="intro">
+Building secure, scalable enterprise systems focused on identity management, 
+infrastructure automation, and AI governance.
+</p>
+<div class="social-links">
+<a href="mailto:Manny@mannyflo.com" class="social-link" aria-label="Email">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+<path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/mannyflores11/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.563-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.761 7 2.453v6.782z"/>
+</svg>
+</a>
+<a href="https://github.com/mfloramirez11" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.731.084-.68.084-.68 1.205.084 1.839 1.237 1.839 1.237 1.07 1.836 2.809 1.305 3.492.998.108-.778.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.289-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.59 8.2-6.084 8.2-11.386 0-6.627-5.373-12-12-12z"/>
+</svg>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Expertise -->
+<section>
+<div class="container">
+<h2 class="section-title">Expertise</h2>
+<div class="cards">
+<div class="card">
+<span class="card-icon">🔐</span>
+<h3>Identity & Access</h3>
+<p>Enterprise IAM with Okta, SAML 2.0, OAuth, OIDC, and SCIM provisioning. SOX compliance and security architecture.</p>
+</div>
+<div class="card">
+<span class="card-icon">⚡</span>
+<h3>Automation</h3>
+<p>Infrastructure as Code with Terraform, Python scripting, and workflow automation for scalable operations.</p>
+</div>
+<div class="card">
+<span class="card-icon">🤖</span>
+<h3>AI Governance</h3>
+<p>Secure deployment and access management for enterprise AI platforms including Gemini, Claude, and ChatGPT.</p>
+</div>
+<div class="card">
+<span class="card-icon">🛠️</span>
+<h3>SaaS Integration</h3>
+<p>Managing Google Workspace, Slack, Jira, Confluence, and cross-platform integrations at enterprise scale.</p>
+</div>
+<div class="card">
+<span class="card-icon">🔄</span>
+<h3>DevOps & SDLC</h3>
+<p>Implementing CI/CD pipelines, version control workflows, and configuration management for identity platform changes.</p>
+</div>
+<div class="card">
+<span class="card-icon">🔗</span>
+<h3>API Integration</h3>
+<p>Building custom integrations and middleware solutions connecting HRIS, identity platforms, and enterprise applications via REST APIs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Tech Stack -->
+<section style="background: rgba(255, 255, 255, 0.02);">
+<div class="container">
+<h2 class="section-title">Tech Stack</h2>
+<div class="tech-stack">
+<span class="badge b1">Okta</span>
+<span class="badge b2">Terraform</span>
+<span class="badge b3">Python</span>
+<span class="badge b1">SAML / OAuth / OIDC</span>
+<span class="badge b2">AI Platforms</span>
+<span class="badge b3">Google Workspace</span>
+<span class="badge b1">DevOps</span>
+<span class="badge b2">SOX Compliance</span>
+<span class="badge b3">SCIM</span>
+<span class="badge b1">Slack / Jira</span>
+<span class="badge b2">Workday</span>
+<span class="badge b3">ServiceNow</span>
+</div>
+</div>
+</section>
+
+<!-- Projects -->
+<section>
+<div class="container">
+<h2 class="section-title">Current Work</h2>
+<div class="projects">
+<div class="project">
+<h3>AI Access Framework</h3>
+<p>Designing secure access policies for enterprise LLM platforms, integrating AI services with identity architecture while maintaining compliance standards.</p>
+</div>
+<div class="project">
+<h3>Identity Automation</h3>
+<p>Built self-service workflows reducing IT tickets by 40%, streamlining onboarding and access management across 100+ applications.</p>
+</div>
+<div class="project">
+<h3>Infrastructure as Code</h3>
+<p>Maintaining Terraform modules for identity platform management with GitOps workflows for automated policy deployment.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="container">
+<h2 class="section-title">Let's Connect</h2>
+<p class="intro" style="margin-bottom: 2rem;">
+Open to discussing enterprise security, automation strategies, and AI governance.
+</p>
+<a href="mailto:Manny@mannyflo.com" class="cta-button">Get in Touch</a>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2024 Manny Flores · Senior Enterprise Applications Engineer</p>
+</footer>
+
+</div>
+
+</body>
+</html>
